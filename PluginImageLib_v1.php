@@ -144,7 +144,7 @@ class PluginImageLib_v1{
      */
     $element->set('carousel_style/innerHTML', str_replace('[height]', $data->get('data/height'), $element->get('carousel_style/innerHTML')));
     /**
-     * Create elements.
+     * Create slide elements.
      */
     $rows = array();
     $active = ' active';
@@ -154,10 +154,13 @@ class PluginImageLib_v1{
       $row->setById('item', 'attribute/class', "item$active");
       $row->setById('item', 'attribute/style', "background-image: url($src);");
       if($item->get('link')){
+        $row->setById('link', 'type', 'a');
         $row->setById('link', 'attribute/href', $item->get('link'));
         if($item->get('link_target_blank')){
           $row->setById('link', 'attribute/target', '_blank');
         }
+      }else{
+        $row->setById('link', 'type', 'div');
       }
       $row->setById('name', 'innerHTML', $item->get('name'));
       $row->setById('description', 'innerHTML', $item->get('description'));
