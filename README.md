@@ -6,3 +6,4 @@ plugin_modules:
     plugin: 'image/lib_v1'
     settings:
       web_dir: '/theme/[theme]/_my_image_folder_'
+      
