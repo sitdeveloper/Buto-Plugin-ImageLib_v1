@@ -1,0 +1,140 @@
+settings:
+  name: 'Navbar'
+content:
+  -
+    type: nav
+    attribute:
+      class: 'navbar navbar-default'
+    innerHTML:
+      0:
+        type: div
+        attribute:
+          class: navbar-header
+        innerHTML:
+          -
+            type: button
+            attribute:
+              type: button
+              class: 'navbar-toggle collapsed'
+              data-toggle: collapse
+              data-target: '#abcd'
+              aria-expanded: 'false'
+            innerHTML:
+              0:
+                type: span
+                attribute:
+                  class: icon-bar
+              1:
+                type: span
+                attribute:
+                  class: icon-bar
+              3:
+                type: span
+                attribute:
+                  class: icon-bar
+          -
+            type: a
+            attribute:
+              class: navbar-brand
+              href: '/'
+            innerHTML: ImageLib
+      2:
+        type: div
+        settings:
+          disabled: false
+        attribute:
+          class: 'collapse navbar-collapse'
+          id: 'abcd'
+        innerHTML:
+          -
+            type: ul
+            attribute:
+              class: 'nav navbar-nav'
+            innerHTML:
+              -
+                type: li
+                innerHTML:
+                  -
+                    type: a
+                    attribute:
+                      onclick: "PluginWfAjax.load('start_content', 'images');return false;"
+                    innerHTML: 'Images'
+              -
+                type: li
+                attribute:
+                  class: dropdown
+                innerHTML:
+                  -
+                    type: a
+                    attribute:
+                      class: dropdown-toggle
+                      data-toggle: dropdown
+                      role: button
+                      aria-haspopup: 'true'
+                      aria-expanded: 'false'
+                    innerHTML:
+                      -
+                        type: span
+                        innerHTML: Add
+                      -
+                        type: span
+                        attribute:
+                          class: caret
+                  -
+                    type: ul
+                    attribute:
+                      class: dropdown-menu
+                    innerHTML:
+                      -
+                        type: li
+                        innerHTML:
+                          -
+                            type: a
+                            innerHTML: New image
+                            attribute:
+                              onclick: "PluginWfBootstrapjs.modal({id: 'imagelib_edit', url: 'edit', lable: this.innerHTML, footer_btn_close: true});"
+              -
+                type: li
+                attribute:
+                  class: dropdown
+                innerHTML:
+                  -
+                    type: a
+                    attribute:
+                      class: dropdown-toggle
+                      data-toggle: dropdown
+                      role: button
+                      aria-haspopup: 'true'
+                      aria-expanded: 'false'
+                    innerHTML:
+                      -
+                        type: span
+                        innerHTML: Widget
+                      -
+                        type: span
+                        attribute:
+                          class: caret
+                  -
+                    type: ul
+                    attribute:
+                      class: dropdown-menu
+                    innerHTML:
+                      -
+                        type: li
+                        innerHTML:
+                          -
+                            type: a
+                            innerHTML: Carousel
+                            attribute:
+                              onclick: "PluginWfAjax.load('start_content', 'widget_carousel');return false;"
+                      -
+                        type: li
+                        innerHTML:
+                          -
+                            type: a
+                            innerHTML: List
+                            attribute:
+                              onclick: "PluginWfAjax.load('start_content', 'widget_list');return false;"
+            
+
+

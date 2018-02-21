@@ -1,0 +1,95 @@
+carousel_style:
+  type: style
+  innerHTML: |
+    .image_lib_v1{
+    width:100% !important;
+    height:[height]px !important;
+    overflow:hidden !important;
+    background-color: black;
+    }
+    .image_lib_v1 .carousel-caption{top:0px !important;}
+    .image_lib_v1 .item{
+      height:[height]px !important; 
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      background-position: center center !important; 
+      background-size: 100% !important;
+    } 
+carousel:
+  type: div
+  attribute:
+    id: carousel-div
+    class: image_lib_v1 carousel slide
+    data-ride: carousel
+  innerHTML:
+    -
+      type: ol
+      attribute:
+        class: carousel-indicators
+        id: carousel_div_indicators
+      innerHTML:
+        -
+          type: li
+          attribute:
+            data-target: '#carousel-div'
+            data-slide-to: 0
+            class: active
+        -
+          type: li
+          attribute:
+            data-target: '#carousel-div'
+            data-slide-to: 1
+        -
+          type: li
+          attribute:
+            data-target: '#carousel-div'
+            data-slide-to: 2
+    -
+      type: div
+      attribute:
+        class: carousel-inner
+        role: listbox
+        id: carousel_rows
+      innerHTML: 'yml:/plugin/image/lib_v1/element/widget_carousel_row.yml'
+    -
+      type: a
+      attribute:
+         class: left carousel-control
+         href: '#carousel-div'
+         role: button 
+         data-slide: prev
+      innerHTML:
+        -
+          type: span
+          attribute:
+            class: glyphicon glyphicon-chevron-left
+            aria-hidden: true
+        -
+          type: span
+          attribute:
+            class: sr-only
+          innerHTML: Previous
+    -
+      type: a
+      attribute:
+         class: right carousel-control
+         href: '#carousel-div'
+         role: button 
+         data-slide: next
+      innerHTML:
+        -
+          type: span
+          attribute:
+            class: glyphicon glyphicon-chevron-right
+            aria-hidden: true
+        -
+          type: span
+          attribute:
+            class: sr-only
+          innerHTML: Next
+carousel_script:
+  type: script
+  innerHTML: "$('#carousel-div').carousel();"
+  
+  
+  

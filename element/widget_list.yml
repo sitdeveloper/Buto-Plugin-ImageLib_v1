@@ -1,0 +1,6 @@
+list:
+  type: div
+  attribute:
+    class: list-group
+    id: image_rows
+  innerHTML: 'yml:/plugin/image/lib_v1/element/widget_list_row.yml'

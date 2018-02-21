@@ -1,0 +1,36 @@
+settings:
+content:
+  -
+    type: div
+    attribute:
+      class: row
+    innerHTML:
+      -
+        type: div
+        attribute:
+          class: col-sm-12 responsive
+        innerHTML:
+          -
+            type: h1
+            attribute:
+              onclick: "PluginWfAjax.update('start_content');return false;"
+            innerHTML: Widget list
+          -
+            type: p
+            innerHTML: Widget settings.
+          -
+            type: pre
+            attribute:
+              id: widget_settings
+            innerHTML: _
+          -
+            type: widget
+            attribute:
+              id: widget_list
+            data:
+              plugin: 'image/lib_v1'
+              method: list
+              data:
+                _: Will be set...
+    
+    

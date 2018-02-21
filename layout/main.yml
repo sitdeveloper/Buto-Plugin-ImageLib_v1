@@ -1,0 +1,14 @@
+settings:
+  path: 'container/innerHTML'
+content:
+  navbar:
+    type: div
+    innerHTML: 'yml:/plugin/image/lib_v1/element/navbar.yml:content'
+  container:
+    type: div
+    attribute:
+      class: 'container-fluid'
+      style: 'min-height:300px;'
+    innerHTML:
+    
+    

@@ -1,0 +1,55 @@
+image_row:
+  type: span
+  attribute:
+    class: list-group-item
+  innerHTML:
+    -
+      type: div
+      attribute:
+        class: row
+      innerHTML:
+        -
+          type: div
+          attribute:
+            class: col-md-9
+          innerHTML:
+            -
+              type: h2
+              attribute:
+                id: name
+                class: list-group-item-heading
+              innerHTML: _Name
+            -
+              type: p
+              attribute:
+                id: description
+              innerHTML: _
+            -
+              type: p
+              attribute:
+                id: td_btn_link
+              innerHTML:
+                -
+                  type: a
+                  attribute:
+                    id: btn_link
+                  innerHTML: _Link
+        -
+          type: div 
+          attribute:
+            class: col-md-3
+            style: "text-align:center"
+          innerHTML:
+            -
+              type: a
+              attribute:
+                id: btn_image
+                target: _blank
+              innerHTML:
+                -
+                  type: img
+                  attribute:
+                    id: img
+                    src: _image.jpg
+                    class: img-thumbnail
+                    style: 'width:100%'

@@ -1,0 +1,41 @@
+url: 'save'
+ajax: true
+submit_value: Save
+id: frm
+items:
+  id:
+    type: hidden
+    label: ID
+  name:
+    type: varchar
+    label: Name
+    mandatory: true
+  description:
+    type: text
+    label: Description
+  link:
+    type: varchar
+    label: Link
+  link_target_blank:
+    type: varchar
+    label: New window
+    option:
+      '': ''
+      Yes: Yes
+    info:
+      text: 'Open link in new window.'
+  sort:
+    type: varchar
+    label: Sort
+    validator:
+      -
+        plugin: wf/form_v2
+        method: validate_numeric
+    info:
+      text: 'Sort order for each item.'
+render:
+  plugin: 'image/lib_v1'
+  method: edit_form_render
+capture:
+  plugin: 'image/lib_v1'
+  method: edit_form_capture

@@ -1,0 +1,26 @@
+settings:
+content:
+  -
+    type: div
+    attribute:
+      class: row
+    innerHTML:
+      -
+        type: div
+        attribute:
+          class: col-sm-12 responsive
+        innerHTML:
+          -
+            type: h1
+            attribute:
+              onclick: "PluginWfAjax.update('start_content');return false;"
+            innerHTML: Images
+          -
+            type: div
+            attribute:
+              class: list-group
+              id: image_rows
+            innerHTML: 'yml:/plugin/image/lib_v1/element/image_row.yml'
+  -
+    type: style
+    innerHTML: .images_column_one{width:50%}

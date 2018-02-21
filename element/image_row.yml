@@ -1,0 +1,51 @@
+image_row:
+  type: span
+  attribute:
+    class: list-group-item
+  innerHTML:
+    -
+      type: div
+      attribute:
+        class: row
+      innerHTML:
+        -
+          type: div
+          attribute:
+            class: col-md-9
+          innerHTML:
+            -
+              type: h2
+              attribute:
+                id: name
+                class: list-group-item-heading
+              innerHTML: _Name
+              
+            -
+              type: table
+              attribute:
+                class: table
+              innerHTML:
+                - {type: tr, innerHTML: [{type: th, innerHTML: Description, attribute: {class: images_column_one}},{type: td, innerHTML: _, attribute: {id: description} }]}
+                - {type: tr, innerHTML: [{type: th, innerHTML: Link},{type: td, innerHTML: _, attribute: {id: link} }]}
+                - {type: tr, innerHTML: [{type: th, innerHTML: New window},{type: td, innerHTML: _, attribute: {id: link_target_blank} }]}
+                - {type: tr, innerHTML: [{type: th, innerHTML: Sort},{type: td, innerHTML: _, attribute: {id: sort} }]}
+            -
+              type: p
+              attribute:
+                class: list-group-item-text
+              innerHTML:
+                -
+                  type: a
+                  attribute:
+                    class: btn btn-default
+                    id: btn_edit
+                    data-id: _
+                    onclick: "PluginWfBootstrapjs.modal({id: 'imagelib_edit', url: 'edit?id='+this.getAttribute('data-id'), lable: this.innerHTML, footer_btn_close: true});"
+                  innerHTML: Edit
+        -
+          type: div 
+          attribute:
+            id: img
+            class: col-md-3
+            style: "text-align:center"
+          innerHTML: _img
