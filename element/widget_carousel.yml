@@ -11,9 +11,11 @@ carousel_style:
     .image_lib_v1 .item{
       height:[height]px !important; 
       background-repeat: no-repeat !important;
-      background-attachment: fixed !important;
-      background-position: center center !important; 
-      background-size: 100% !important;
+      background-position: 50% 50% !important; 
+      -webkit-background-size: cover !important;
+      -moz-background-size: cover !important;
+       -o-background-size: cover !important;
+       background-size: cover !important;
     } 
 carousel:
   type: div
