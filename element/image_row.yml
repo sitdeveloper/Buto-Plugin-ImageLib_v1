@@ -37,10 +37,10 @@ image_row:
                 -
                   type: a
                   attribute:
-                    class: btn btn-default
+                    class: btn btn-primary
                     id: btn_edit
                     data-id: _
-                    onclick: "PluginWfBootstrapjs.modal({id: 'imagelib_edit', url: 'edit?id='+this.getAttribute('data-id'), lable: this.innerHTML, footer_btn_close: true});"
+                    onclick: "PluginWfBootstrapjs.modal({id: 'imagelib_edit', url: 'edit?id='+this.getAttribute('data-id'), lable: this.innerHTML});"
                   innerHTML: Edit
         -
           type: div 
