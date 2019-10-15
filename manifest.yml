@@ -19,6 +19,9 @@ plugin:
   -
     name: upload/file
     version: '1.2'
+  -
+    name: twitter/bootstrap335v
+    version: '1.0'
 sys:
   -
     name: mercury

@@ -6,6 +6,8 @@ class PluginImageLib_v1{
       wfPlugin::includeonce('wf/yml');
       wfPlugin::includeonce('wf/array');
       wfPlugin::enable('wf/form_v2');
+      wfPlugin::enable('twitter/bootstrap335v');
+      wfPlugin::enable('upload/file');
     }
   }
   private function init_page(){
