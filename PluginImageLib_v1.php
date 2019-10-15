@@ -1,16 +1,6 @@
 <?php
-/**
- * Create a slider by upload images in browser. Images and text from a single folder.
- * Set up it as a page plugin and sign in as webmaster or webadmin. Widget examples is showing up at the backend.
- */
 class PluginImageLib_v1{
-  /**
-   * Vars.
-   */
   private $settings = null;
-  /**
-   * Constructor.
-   */
   function __construct($buto) {
     if($buto){
       wfPlugin::includeonce('wf/yml');
@@ -18,9 +8,6 @@ class PluginImageLib_v1{
       wfPlugin::enable('wf/form_v2');
     }
   }
-  /**
-   * Init method.
-   */
   private function init_page(){
      wfArray::set($GLOBALS, 'sys/layout_path', '/plugin/image/lib_v1/layout');
     if(!wfUser::hasRole("webmaster") && !wfUser::hasRole("webadmin")){
@@ -28,9 +15,6 @@ class PluginImageLib_v1{
     }
     $this->settings = new PluginWfArray(wfArray::get($GLOBALS, 'sys/settings/plugin_modules/'.wfArray::get($GLOBALS, 'sys/class').'/settings'));
   }
-  /**
-   * Start page.
-   */
   public function page_start(){
     $this->init_page();
     $page = $this->getYml('page/start.yml');
@@ -138,7 +122,6 @@ class PluginImageLib_v1{
     $element = $this->getYml('element/widget_carousel.yml');
     $row = $this->getYml('element/widget_carousel_row.yml');
     $carousel_div_indicators = $element->getById('carousel_div_indicators', 'innerHTML/0');
-    //wfHelp::yml_dump($carousel_div_indicators);
     /**
      * Set style.
      */
@@ -182,13 +165,11 @@ class PluginImageLib_v1{
       $active = null;
       $i++;
     }
-    //wfHelp::yml_dump($indicators, true);
     $element->setById('carousel_div_indicators', 'innerHTML', $indicators);
     /**
      * Set elements.
      */
     $element->setById('carousel_rows', 'innerHTML', $rows);
-    //wfHelp::yml_dump($element, true);
     /**
      * 
      */

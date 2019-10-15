@@ -1,5 +1,12 @@
 # Buto-Plugin-ImageLib_v1
+
 Bootstrap slider builder.
+
+Create a slider by upload images in browser. Images and text from a single folder.
+
+Set up it as a page plugin and sign in as webmaster or webadmin. Widget examples is showing up at the backend.
+
+
 
 In /theme/folder1/folder2/config/settings.yml.
 ```
