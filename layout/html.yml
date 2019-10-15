@@ -141,6 +141,11 @@ content:
             data:
               plugin: 'upload/file'
               method: include
+          form_form_v1:
+            type: widget
+            data:
+              plugin: 'form/form_v1'
+              method: include
       body:
         type: body
         innerHTML: 'body...'

@@ -5,7 +5,7 @@ class PluginImageLib_v1{
     if($buto){
       wfPlugin::includeonce('wf/yml');
       wfPlugin::includeonce('wf/array');
-      wfPlugin::enable('wf/form_v2');
+      wfPlugin::enable('form/form_v1');
       wfPlugin::enable('twitter/bootstrap335v');
       wfPlugin::enable('upload/file');
     }
@@ -229,7 +229,7 @@ class PluginImageLib_v1{
   }
   public function page_edit(){
     $this->init_page();
-    $widget = wfDocument::createWidget('wf/form_v2', 'render', 'yml:/plugin/image/lib_v1/form/edit_form.yml');
+    $widget = wfDocument::createWidget('form/form_v1', 'render', 'yml:/plugin/image/lib_v1/form/edit_form.yml');
     wfDocument::renderElement(array($widget));
     $id = wfRequest::get('id');
     if($id){
@@ -239,7 +239,7 @@ class PluginImageLib_v1{
   }
   public function page_save(){
     $this->init_page();
-    $widget = wfDocument::createWidget('wf/form_v2', 'capture', 'yml:/plugin/image/lib_v1/form/edit_form.yml');
+    $widget = wfDocument::createWidget('form/form_v1', 'capture', 'yml:/plugin/image/lib_v1/form/edit_form.yml');
     wfDocument::renderElement(array($widget));
   }
   public function page_delete(){
@@ -260,6 +260,7 @@ class PluginImageLib_v1{
     return new PluginWfYml(wfArray::get($GLOBALS, 'sys/app_dir').'/plugin/image/lib_v1/'.$file, $path_to_key);
   }
   public function edit_form_render($form){
+    $form = new PluginWfArray($form);
     $this->init_page();
     $image_lib = new PluginWfYml(wfArray::get($GLOBALS, 'sys/web_dir').wfSettings::replaceDir($this->settings->get('web_dir')).'/_image_lib.yml');
     $id = wfRequest::get('id');
@@ -267,10 +268,20 @@ class PluginImageLib_v1{
       $id = wfCrypt::getUid();
     }
     $image_lib->set("$id/id", $id);
-    $form = new PluginWfArray(PluginWfForm_v2::setDefaultsFromArray($form->get(), $image_lib->get($id)));
-    return $form;
+    /**
+     * Set form.
+     */
+    $obj = new PluginFormForm_v1();
+    $obj->setData($form->get());
+    $obj->setDefaultsFromArray($image_lib->get($id));
+    $form = new PluginWfArray($obj->data);    
+    /**
+     * 
+     */
+    return $form->get();
   }
   public function edit_form_capture($form){
+    $form = new PluginWfArray($form);
     $this->init_page();
     $id = wfRequest::get('id');
     $image_lib = new PluginWfYml(wfArray::get($GLOBALS, 'sys/web_dir').wfSettings::replaceDir($this->settings->get('web_dir')).'/_image_lib.yml');

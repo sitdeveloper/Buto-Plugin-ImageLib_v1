@@ -29,7 +29,7 @@ items:
     label: Sort
     validator:
       -
-        plugin: wf/form_v2
+        plugin: form/form_v1
         method: validate_numeric
     info:
       text: 'Sort order for each item.'
