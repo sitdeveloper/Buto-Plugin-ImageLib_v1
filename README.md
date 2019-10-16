@@ -37,26 +37,24 @@ Then go to /backend_for_image_lib_v1/start to upload images.
 ### Carousel
 
 ```
--
-  type: widget
+type: widget
+data:
+  plugin: image/lib_v1
+  method: carousel
   data:
-    plugin: image/lib_v1
-    method: carousel
-    data:
-      web_dir: '/theme/[theme]/_my_image_folder_'
-      height: 300
+    web_dir: '/theme/[theme]/_my_image_folder_'
+    height: 300
 ```
     
 ### List
 
 ```
--
-  type: widget
+type: widget
+data:
+  plugin: image/lib_v1
+  method: list
   data:
-    plugin: image/lib_v1
-    method: list
-    data:
-      web_dir: '/theme/[theme]/_my_image_folder_'
+    web_dir: '/theme/[theme]/_my_image_folder_'
 ```
     
     

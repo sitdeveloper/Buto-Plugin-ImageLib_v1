@@ -1,0 +1,17 @@
+type: div
+innerHTML:
+  -
+    type: a
+    innerHTML:
+      -
+        type: h1
+        innerHTML: rs:name
+      -
+        type: p
+        innerHTML: rs:description
+    attribute:
+      class: carousel-caption
+      href: rs:link
+      target: rs:target
+attribute:
+  style: 'background:gray;min-height:[height]px;background-image: url(''[image_url]'');background-repeat:no-repeat;background-position:center;'

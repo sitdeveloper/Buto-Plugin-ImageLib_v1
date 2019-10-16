@@ -1,0 +1,17 @@
+type: widget
+data:
+  plugin: bootstrap/carousel_v1
+  method: carousel
+  data:
+    id: plugin_bootstrap_carousel_v1
+    controls: true
+    indicators: true
+    fade: true
+    item: rs:item
+    style: |
+      .carousel{
+        min-height: [height]px;
+        background: silver;
+      }
+      .carousel-item{
+      }

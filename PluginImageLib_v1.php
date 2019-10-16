@@ -110,6 +110,9 @@ class PluginImageLib_v1{
   }
   public function widget_carousel($data){
     $data = new PluginWfArray($data);
+    /**
+     * Height
+     */
     if(!$data->get('data/height')){
       $data->set('data/height', 300);
     }
@@ -117,65 +120,38 @@ class PluginImageLib_v1{
      * Get data from yml file.
      */
     $image_lib = new PluginWfYml(wfArray::get($GLOBALS, 'sys/web_dir').wfSettings::replaceDir($data->get('data/web_dir')).'/_image_lib.yml');
+    /**
+     * Sort
+     */
     $image_lib = new PluginWfArray(wfArray::sortMultiple($image_lib->get(), 'sort'));
     /**
-     * 
+     * Items
      */
-    $element = $this->getYml('element/widget_carousel.yml');
-    $row = $this->getYml('element/widget_carousel_row.yml');
-    $carousel_div_indicators = $element->getById('carousel_div_indicators', 'innerHTML/0');
-    /**
-     * Set style.
-     */
-    $element->set('carousel_style/innerHTML', str_replace('[height]', $data->get('data/height'), $element->get('carousel_style/innerHTML')));
-    /**
-     * Create slide elements.
-     */
-    $rows = array();
-    $active = ' active';
+    $items = array();
     foreach ($image_lib->get() as $key => $value) {
       $item = new PluginWfArray($value);
-      $src = $data->get('data/web_dir').'/'.$key.'.jpg?x='.wfCrypt::getUid();
-      $row->setById('item', 'attribute/class', "item$active");
-      $row->setById('item', 'attribute/style', "background-image: url($src);");
-      if($item->get('link')){
-        $row->setById('link', 'type', 'a');
-        $row->setById('link', 'attribute/href', $item->get('link'));
-        if($item->get('link_target_blank')){
-          $row->setById('link', 'attribute/target', '_blank');
-        }
-      }else{
-        $row->setById('link', 'type', 'div');
+      $filename = $data->get('data/web_dir').'/'.$key.'.jpg';
+      $filename = wfSettings::replaceDir($filename);
+      $time = wfFilesystem::getFiletime(wfGlobals::getWebDir().$filename);
+      $item->set('image_url', $filename.'?_t='.$time);
+      $item->set('target', null);
+      if($item->get('link_target_blank')){
+        $item->set('target', '_blank');
       }
-      $row->setById('name', 'innerHTML', $item->get('name'));
-      $row->setById('description', 'innerHTML', $item->get('description'));
-      $rows[] = $row->get('row_1');
-      $active = null;
+      $carousel_item = $this->getYml('element/carousel_item.yml');
+      $carousel_item->setByTag($item->get());
+      $carousel_item->set('attribute/style', str_replace('[image_url]', $item->get('image_url'), $carousel_item->get('attribute/style')));
+      $carousel_item->set('attribute/style', str_replace('[height]', $data->get('data/height'), $carousel_item->get('attribute/style')));
+      $items[] = $carousel_item->get();
     }
     /**
-     * Indicators.
+     * Carousel
      */
-    $indicators = array();
-    $active = ' active';
-    $i = 0;
-    foreach ($image_lib->get() as $key => $value) {
-      $item = new PluginWfArray($value);
-      $carousel_div_indicators->set('attribute/class', $active);
-      $carousel_div_indicators->set('attribute/data-slide-to', $i);
-      $carousel_div_indicators->set('attribute/title', $item->get('name'));
-      $indicators[] = $carousel_div_indicators->get();
-      $active = null;
-      $i++;
-    }
-    $element->setById('carousel_div_indicators', 'innerHTML', $indicators);
-    /**
-     * Set elements.
-     */
-    $element->setById('carousel_rows', 'innerHTML', $rows);
-    /**
-     * 
-     */
-    wfDocument::renderElement($element->get());
+    $carousel = $this->getYml('element/carousel.yml');
+    $carousel->set('data/data/style', str_replace('[height]', $data->get('data/height'), $carousel->get('data/data/style')));
+    $carousel->setByTag(array('item' => $items));
+    wfPlugin::enable('bootstrap/carousel_v1');
+    wfDocument::renderElement(array($carousel->get()));
   }
   public function widget_list($data){
     $data = new PluginWfArray($data);
