@@ -29,6 +29,7 @@ image_row:
                 - {type: tr, innerHTML: [{type: th, innerHTML: Link},{type: td, innerHTML: _, attribute: {id: link} }]}
                 - {type: tr, innerHTML: [{type: th, innerHTML: New window},{type: td, innerHTML: _, attribute: {id: link_target_blank} }]}
                 - {type: tr, innerHTML: [{type: th, innerHTML: Sort},{type: td, innerHTML: _, attribute: {id: sort} }]}
+                - {type: tr, innerHTML: [{type: th, innerHTML: Disabled},{type: td, innerHTML: _, attribute: {id: disabled} }]}
             -
               type: p
               attribute:

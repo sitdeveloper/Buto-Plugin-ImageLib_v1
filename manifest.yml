@@ -1,18 +1,22 @@
-version: '1.3'
+version: '1.4.0'
 history:
-  '1.3':
+  '1.4.0':
+    date: '2020-03-11'
+    title: Disable item
+    description: 'One could disable item and it will not show up in list or carousel.'
+  '1.3.0':
     date: '2019-10-16'
     title: Carousel
     description: 'Upgrade carousel by using PluginBootstrapCarousel.'
-  '1.2':
+  '1.2.0':
     date: '2019-10-15'
     title: Bootstrap 4
     description: 'Upgrade to Bootstrap 4.'
-  '1.1':
+  '1.1.0':
     date: '2019-10-15'
     title: Form plugin
     description: 'Change form plugin from wf/form_v2 to form/form_v1.'
-  '1.0':
+  '1.0.0':
     date: '2019-10-15'
     description: 'Manifest created.'
 plugin:

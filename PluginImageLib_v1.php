@@ -67,6 +67,7 @@ class PluginImageLib_v1{
       $image_row->setById('link', 'innerHTML', $item->get('link'));
       $image_row->setById('link_target_blank', 'innerHTML', $item->get('link_target_blank'));
       $image_row->setById('sort', 'innerHTML', $item->get('sort'));
+      $image_row->setById('disabled', 'innerHTML', $item->get('disabled'));
       $image_row->setById('img', 'innerHTML', array($widget_upload_file));
       $image_row->setById('btn_edit', 'attribute/data-id', $key);
       $element[] = $image_row->get('image_row');
@@ -130,6 +131,9 @@ class PluginImageLib_v1{
     $items = array();
     foreach ($image_lib->get() as $key => $value) {
       $item = new PluginWfArray($value);
+      if($item->get('disabled')){
+        continue;
+      }
       $filename = $data->get('data/web_dir').'/'.$key.'.jpg';
       $filename = wfSettings::replaceDir($filename);
       $time = wfFilesystem::getFiletime(wfGlobals::getWebDir().$filename);
@@ -171,6 +175,9 @@ class PluginImageLib_v1{
     $rows = array();
     foreach ($image_lib->get() as $key => $value) {
       $item = new PluginWfArray($value);
+      if($item->get('disabled')){
+        continue;
+      }
       $row->setById('name', 'innerHTML', $item->get('name'));
       $row->setById('description', 'innerHTML', $item->get('description'));
       $row->setById('btn_image', 'attribute/href', $data->get('data/web_dir').'/'.$key.'.jpg?x='.wfCrypt::getUid());
@@ -266,6 +273,7 @@ class PluginImageLib_v1{
     $image_lib->set("$id/link", $form->get('items/link/post_value'));
     $image_lib->set("$id/link_target_blank", $form->get('items/link_target_blank/post_value'));
     $image_lib->set("$id/sort", $form->get('items/sort/post_value'));
+    $image_lib->set("$id/disabled", $form->get('items/disabled/post_value'));
     $image_lib->save();
     return array("PluginWfAjax.update('start_content');$('.modal').modal('hide');");
   }

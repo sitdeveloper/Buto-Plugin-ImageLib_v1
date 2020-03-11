@@ -33,6 +33,12 @@ items:
         method: validate_numeric
     info:
       text: 'Sort order for each item.'
+  disabled:
+    type: varchar
+    label: Disabled
+    option:
+      '': ''
+      'Yes': Yes
 render:
   plugin: 'image/lib_v1'
   method: edit_form_render
