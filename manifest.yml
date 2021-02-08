@@ -37,7 +37,7 @@ plugin:
     version: 1.2.1
   -
     name: theme/include
-    version: 1.7.1
+    version: 1.8.0
   -
     name: bootstrap/carousel_v1
     version: '1.3'
