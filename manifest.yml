@@ -1,5 +1,9 @@
-version: 1.4.4
+version: 1.4.5
 history:
+  1.4.5:
+    date: '2022-05-23'
+    title: Versions
+    description: 'Versions update.'
   1.4.4:
     date: '2022-05-02'
     title: Versions
@@ -44,19 +48,19 @@ plugin:
     version: 1.2.3
   -
     name: form/form_v1
-    version: 1.52.1
+    version: 1.52.3
   -
     name: image/lib_v1
-    version: 1.4.3
+    version: 1.4.4
   -
     name: upload/file
-    version: 1.5.0
+    version: 1.6.0
   -
     name: theme/include
-    version: 1.10.0
+    version: 1.10.3
   -
     name: bootstrap/carousel_v1
-    version: 1.3.1
+    version: 1.3.2
 sys:
   -
     name: mercury
