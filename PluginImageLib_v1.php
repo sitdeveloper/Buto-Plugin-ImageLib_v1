@@ -11,7 +11,7 @@ class PluginImageLib_v1{
     }
   }
   private function init_page(){
-     wfArray::set($GLOBALS, 'sys/layout_path', '/plugin/image/lib_v1/layout');
+     wfGlobals::setSys('layout_path', '/plugin/image/lib_v1/layout');
     if(!wfUser::hasRole("webmaster") && !wfUser::hasRole("webadmin")){
       exit('Role webmaster or webadmin is required!');
     }
@@ -144,15 +144,15 @@ class PluginImageLib_v1{
       }
       $carousel_item = $this->getYml('element/carousel_item.yml');
       $carousel_item->setByTag($item->get());
-      $carousel_item->set('attribute/style', str_replace('[image_url]', $item->get('image_url'), $carousel_item->get('attribute/style')));
-      $carousel_item->set('attribute/style', str_replace('[height]', $data->get('data/height'), $carousel_item->get('attribute/style')));
+      $carousel_item->set('attribute/style', wfPhpfunc::str_replace('[image_url]', $item->get('image_url'), $carousel_item->get('attribute/style')));
+      $carousel_item->set('attribute/style', wfPhpfunc::str_replace('[height]', $data->get('data/height'), $carousel_item->get('attribute/style')));
       $items[] = $carousel_item->get();
     }
     /**
      * Carousel
      */
     $carousel = $this->getYml('element/carousel.yml');
-    $carousel->set('data/data/style', str_replace('[height]', $data->get('data/height'), $carousel->get('data/data/style')));
+    $carousel->set('data/data/style', wfPhpfunc::str_replace('[height]', $data->get('data/height'), $carousel->get('data/data/style')));
     $carousel->setByTag(array('item' => $items));
     wfPlugin::enable('bootstrap/carousel_v1');
     wfDocument::renderElement(array($carousel->get()));
